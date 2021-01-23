@@ -6,6 +6,8 @@ C_LONGINT:C283($blockSize; $i; $byte; $algo)
 
 C_BLOB:C604($key; $message)
 
+$algoName:=Uppercase:C13($algoName)
+
 Case of 
 		
 		//________________________________________

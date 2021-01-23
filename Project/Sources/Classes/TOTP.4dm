@@ -4,7 +4,7 @@ Class extends OTP
 
 Class constructor($secret : Text; $opt : Object)
 	Super:C1705($secret; $opt)
-	This:C1470._optSet($opt; "interval"; Is integer:K8:5; 30)
+	This:C1470._optSet($opt; "interval"; Is real:K8:4; 30)
 	
 Function at($timestamp : Integer)->$return : Integer
 	$return:=This:C1470.generateOTP(This:C1470.timecode($timestamp)); 

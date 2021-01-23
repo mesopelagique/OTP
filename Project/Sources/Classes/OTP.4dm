@@ -5,7 +5,7 @@ Class constructor($secret : Text; $opt : Object)
 	This:C1470.secret:=$secret
 	
 	This:C1470._optSet($opt; "digest"; Is text:K8:3; "sha1")
-	This:C1470._optSet($opt; "digits"; Is integer:K8:5; 6)
+	This:C1470._optSet($opt; "digits"; Is real:K8:4; 6)
 	
 Function _optSet($opt : Object; $key : Text; $type : Integer; $defaulValue : Variant)
 	If (Value type:C1509($opt[$key])=$type)
