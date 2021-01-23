@@ -7,7 +7,7 @@ Class constructor($secret : Text; $opt : Object)
 	This:C1470._optSet($opt; "interval"; Is integer:K8:5; 30)
 	
 Function at($timestamp : Integer)->$return : Integer
-	$return:=This:C1470.generateOTP($this->timecode($timestamp)); 
+	$return:=This:C1470.generateOTP(This:C1470.timecode($timestamp)); 
 	
 Function now()->$return : Integer
 	$return:=This:C1470.generateOTP(This:C1470.timecode(This:C1470.nowTimeStamp()))
@@ -26,4 +26,4 @@ Function timecode($timestamp : Integer)->$timecode : Integer
 	$timecode:=((($timestamp*1000)/(This:C1470.interval*1000)))
 	
 Function nowTimeStamp
-	
+	// TODO

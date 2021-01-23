@@ -1,4 +1,11 @@
 ﻿{
+	"phpport": {
+		"methods": [
+			"hash_hmac",
+			"hexdec",
+			"str_split"
+		]
+	},
 	"Test": {
 		"methods": [
 			"test_"

@@ -12,6 +12,7 @@ Function afterTest
 	
 Function run()
 	This:C1470.beforeClass()
+	var $function : Object
 	For each ($function; This:C1470.functions)
 		This:C1470.beforeTest()
 		$function.call(This:C1470)

@@ -16,15 +16,20 @@ Function _optSet($opt : Object; $key : Text; $type : Integer; $defaulValue : Var
 	
 	///Generate a one-time password
 Function generateOTP($input : Integer)->$otp : Integer
+	var $hash : Text
 	$hash:=hash_hmac(This:C1470.digest; This:C1470.intToBytestring($input); This:C1470.byteSecret())
 	
+	var $hmac : Collection
 	$hmac:=New collection:C1472()
+	var $hex : Text
 	For each ($hex; str_split($hash; 2))
 		$hmac.append(hexdec($hex))
 	End for each 
 	
+	var $offset : Integer
 	$offset:=$hmac[19] & 0x000F
 	
+	var $code : Integer
 	$code:=($hmac[$offset+0] & 0x007F) << 24 | \
 		($hmac[$offset+1] & 0x00FF) << 16 | \
 		($hmac[$offset+2] & 0x00FF) << 8 | \
@@ -39,3 +44,5 @@ Function byteSecret()->$binary : Blob
 Function intToBytestring($int : Integer)->$blob : Blob
 	INTEGER TO BLOB:C548($int; $blob; PC byte ordering:K22:3)
 	
+Function urlencode($text : Text)->$encoded : Text
+	// TODO

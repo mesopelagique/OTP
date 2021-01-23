@@ -14,6 +14,9 @@ Function encode
 	
 	C_TEXT:C284($0; $obuff)
 	C_LONGINT:C283($bf)
+	C_TEXT:C284($alfa)
+	C_LONGINT:C283($z; $x; $i; $bits; $offset; $a; $bf; $offset; $index)
+	
 	$alfa:="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
 	$z:=Length:C16($alfa)
 	$x:=BLOB size:C605($1)
@@ -65,6 +68,10 @@ Function decode
 	C_BLOB:C604($0; $blob)
 	C_TEXT:C284($1; $b32)
 	SET BLOB SIZE:C606($blob; 0)
+	
+	C_TEXT:C284($alfa)
+	C_LONGINT:C283($z; $x; $i; $cc; $flt; $padc; $bf; $offset; $index)
+	
 	$x:=Length:C16($1)
 	$b32:=$1
 	C_LONGINT:C283($bf; $bits)
