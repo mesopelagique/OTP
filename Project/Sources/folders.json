@@ -1,0 +1,16 @@
+﻿{
+	"Test": {
+		"methods": [
+			"test_"
+		],
+		"classes": [
+			"TestBase32",
+			"TestCase",
+			"TestHmac",
+			"TestHOTP",
+			"TestOTP",
+			"TestTOTP"
+		]
+	},
+	"trash": {}
+}
