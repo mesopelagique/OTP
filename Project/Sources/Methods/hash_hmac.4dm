@@ -104,8 +104,5 @@ BASE64 DECODE:C896(Generate digest:C1147($innerKey; $algo; *); $b; *)
 
 // append hash(innerKey + message) to outerKey
 COPY BLOB:C558($b; $outerKey; 0; $blockSize; BLOB size:C605($b))
+
 $hash:=Generate digest:C1147($outerKey; $algo; *)
-
-//BASE64 DECODE($hash; $b; *)
-//$hash:=BLOB to text($b; UTF8 text with length)
-
