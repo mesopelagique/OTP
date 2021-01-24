@@ -10,8 +10,7 @@
 Generate [one-time passwords(OTP)](https://en.wikipedia.org/wiki/One-time_password)
 
 This is compatible with apps available for Android and iPhone.
-> For that provide the secret key or an url in QR code for instance
-
+> For that provide the secret key or an url in QR code for instance 
 
 ## HOTP [RFC 4226](http://tools.ietf.org/html/rfc4226)
 
@@ -100,7 +99,7 @@ $url:=$otp.provisioningUri("my app")
 [code-size]: https://img.shields.io/github/languages/code-size/mesopelagique/OTP.svg
 [code-url]: https://developer.4d.com/
 [release-shield]: https://img.shields.io/github/v/release/mesopelagique/OTP
-[release-url]: https://github.com/mesopelagique/Twilio/releases/latest
+[release-url]: https://github.com/mesopelagique/OTP/releases/latest
 [license-shield]: https://img.shields.io/github/license/mesopelagique/OTP
 [license-url]: LICENSE.md
 [discord-shield]: https://img.shields.io/badge/chat-discord-7289DA?logo=discord&style=flat
