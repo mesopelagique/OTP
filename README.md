@@ -88,6 +88,47 @@ $code:=$o.at(1301012137)
 $url:=$otp.provisioningUri("my app")
 ```
 
+## Base32
+
+To encode to base 32 without padding (ie. =) you could use
+
+```4d
+OTP.Base32.instance.encode($aSecretKeyBlob)
+OTP.Base32.instance.encodeText($aSecretKeyText)
+```
+
+Code from [forum](https://discuss.4d.com/t/base32-encode-decode-in-native-4d/11129)
+
+⚠️ seems to not encoded property all string
+
+## Testing authenticator app with TOTP
+
+### Download ones
+
+- Google Authenticator [iOS](https://apps.apple.com/fr/app/google-authenticator/id388497605) [android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=fr&gl=US)
+- Microsoft Authenticator [iOS](https://apps.apple.com/fr/app/microsoft-authenticator/id983156458) [android](https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=fr&gl=US)
+- ...
+
+### Scan a QR code with the app
+
+Provide a QR Code with url provided by code 
+
+```4d
+$url:=$otp.provisioningUri("mesopelagique") // otpauth://totp/mesopelagique?secret=JDDK4U6G3BJLEZ7Y
+```
+
+You could generate QR code using [javascript](https://github.com/mesopelagique/form-login-SignInWithQRCode#present-a-qr-code-and-where) or temporary for test using a website like https://www.qr-code-generator.com/, https://www.unitag.io/fr/qrcode, ...
+
+### Verify code
+
+```4d
+ASSERT($opt.verify(Int(Request("code?")); "Code is not ok")
+```
+
+Due to time lag between device, sometimes a code verify could failed
+
+> one solution could be to test before and after code too
+
 ## Other components
 
 [<img src="https://mesopelagique.github.io/quatred.png" alt="mesopelagique"/>](https://mesopelagique.github.io/)
