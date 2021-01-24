@@ -17,8 +17,10 @@ Function verify($otp : Integer; $timestamp : Integer)->$return : Boolean
 	$return:=($otp=This:C1470.at($timestamp))
 	
 Function provisioningUri($issuer : Text)->$url : Text
-	$url:="otpauth://totp/"+urlencode($issuer)+"?secret="+This:C1470.secret  // XXX could add optional period
+	$url:="otpauth://totp/"+urlencode($issuer)+"?secret="+This:C1470.secret
+	If (This:C1470.interval#30)
+		$url:=$url+"&period"+String:C10(This:C1470.interval)  // not managed by all ap
+	End if 
 	
 Function timecode($timestamp : Integer)->$timecode : Integer
 	$timecode:=((($timestamp*1000)/(This:C1470.interval*1000)))
-	
