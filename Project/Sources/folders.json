@@ -4,7 +4,7 @@
 			"hash_hmac",
 			"hexdec",
 			"str_split",
-			"timep",
+			"time_",
 			"urlencode"
 		]
 	},
@@ -13,7 +13,7 @@
 			"test_run"
 		],
 		"classes": [
-			"_TestBase32",
+			"TestBase32",
 			"TestCase",
 			"TestHmac",
 			"TestHOTP",

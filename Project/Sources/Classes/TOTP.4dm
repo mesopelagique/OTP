@@ -8,11 +8,11 @@ Function at($timestamp : Integer)->$return : Integer
 	$return:=This:C1470.generateOTP(This:C1470.timecode($timestamp)); 
 	
 Function now()->$return : Integer
-	$return:=This:C1470.generateOTP(This:C1470.timecode(timep()))
+	$return:=This:C1470.generateOTP(This:C1470.timecode(time_()))
 	
 Function verify($otp : Integer; $timestamp : Integer)->$return : Boolean
 	If ($timestamp=Null:C1517)
-		$timestamp:=timep()
+		$timestamp:=time_()
 	End if 
 	$return:=($otp=This:C1470.at($timestamp))
 	

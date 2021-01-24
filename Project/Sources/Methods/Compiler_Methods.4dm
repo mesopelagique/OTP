@@ -11,7 +11,7 @@ C_TEXT:C284(str_split; $1)
 C_LONGINT:C283(str_split; $2)
 C_TEXT:C284(urlencode; $0)
 C_TEXT:C284(urlencode; $1)
-C_LONGINT:C283(timep; $0)
+C_LONGINT:C283(time_; $0)
 
 //OTP
 C_OBJECT:C1216(OTP; $0)

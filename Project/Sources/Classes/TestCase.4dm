@@ -42,7 +42,7 @@ Function assertEquals
 		: (Value type:C1509($2)=Is collection:K8:32)
 			ASSERT:C1129(False:C215; $message)
 		Else 
-			ASSERT:C1129($1=$2; $message)  // work only with primitive type, method must be enhanced for col or object etc...
+			ASSERT:C1129($1=$2; $message)
 	End case 
 	
 	

@@ -47,25 +47,14 @@ Function encode
 			End if 
 		End if 
 		$index:=0x001F & ($bf >> ($bits-5))
-		If (($pad>0) | ($i>$x)) & ($index=0)
-			$obuff:=$obuff+"="  // TODO remove padding !
+		If ((($pad>0) | ($i>$x)) & ($index=0))
+			$obuff:=$obuff+"="
 		Else 
 			$obuff:=$obuff+Substring:C12($alfa; $index+1; 1)
 		End if 
 		$bits:=$bits-5
 	End while 
-	$0:=$obuff
-	
-/*
-Function decodeText($b32 : Text)->$decoded : Text
-C_BLOB($blob)
-$blob:=This.decode($b32)
-$decoded:=BLOB to text($blob; UTF8 text without length)
-*/
-/*
-var $ok : Boolean
-$f:=File("/Users/phimage/Downloads/otphp-bbe634327b04c200e4b071a6709007e306276bf1/b32.php")
-$ok:=PHP Execute($f.platformPath; "b32"; $decoded; $b32)*/
+	$0:=Replace string:C233($obuff; "="; "")
 	
 Function decode
 	C_BLOB:C604($0; $blob)
