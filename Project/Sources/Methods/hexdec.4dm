@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 C_TEXT:C284($1)
 C_LONGINT:C283($result; $lLength; $lDigitValue; $0; $i)
 

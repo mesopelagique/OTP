@@ -1,3 +1,5 @@
+// Original code from https://discuss.4d.com/t/base32-encode-decode-in-native-4d/11129/4
+
 Class constructor
 	singletonize(This:C1470)
 	
@@ -46,7 +48,7 @@ Function encode
 		End if 
 		$index:=0x001F & ($bf >> ($bits-5))
 		If (($pad>0) | ($i>$x)) & ($index=0)
-			$obuff:=$obuff+"="
+			$obuff:=$obuff+"="  // TODO remove padding !
 		Else 
 			$obuff:=$obuff+Substring:C12($alfa; $index+1; 1)
 		End if 
@@ -54,15 +56,16 @@ Function encode
 	End while 
 	$0:=$obuff
 	
-Function decodeText
-	C_TEXT:C284($0; $decoded)
-	C_TEXT:C284($1; $b32)
-	$b32:=$1
-	C_BLOB:C604($blob)
-	$blob:=This:C1470.decode($b32)
-	
-	$decoded:=BLOB to text:C555($blob; UTF8 C string:K22:15)
-	$0:=$decoded
+/*
+Function decodeText($b32 : Text)->$decoded : Text
+C_BLOB($blob)
+$blob:=This.decode($b32)
+$decoded:=BLOB to text($blob; UTF8 text without length)
+*/
+/*
+var $ok : Boolean
+$f:=File("/Users/phimage/Downloads/otphp-bbe634327b04c200e4b071a6709007e306276bf1/b32.php")
+$ok:=PHP Execute($f.platformPath; "b32"; $decoded; $b32)*/
 	
 Function decode
 	C_BLOB:C604($0; $blob)

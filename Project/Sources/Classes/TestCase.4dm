@@ -27,11 +27,24 @@ Function assertEquals
 	If (Count parameters:C259>2)
 		$message:=$3
 	Else 
-		$message:="'"+This:C1470._toString($1)+"' not equals to expected '"+This:C1470._toString($2)+"'"
+		$message:="'"+This:C1470._toString($2)+"' not equals to expected '"+This:C1470._toString($1)+"'"
 	End if 
-	If (Asserted:C1132(Value type:C1509($1)=Value type:C1509($2); $message))
-		ASSERT:C1129($1=$2; $message)  // work only with primitive type, method must be enhanced for col or object etc...
-	End if 
+	
+	Case of 
+		: (Value type:C1509($1)=Is object:K8:27)
+			ASSERT:C1129(Value type:C1509($2)=Is object:K8:27; $message)
+			ASSERT:C1129(New collection:C1472($1).equal(New collection:C1472($2)); $message)
+		: (Value type:C1509($2)=Is object:K8:27)
+			ASSERT:C1129(False:C215; $message)
+		: (Value type:C1509($1)=Is collection:K8:32)
+			ASSERT:C1129(Value type:C1509($2)=Is collection:K8:32)
+			ASSERT:C1129($1.equal($2); $message)
+		: (Value type:C1509($2)=Is collection:K8:32)
+			ASSERT:C1129(False:C215; $message)
+		Else 
+			ASSERT:C1129($1=$2; $message)  // work only with primitive type, method must be enhanced for col or object etc...
+	End case 
+	
 	
 Function _toString($var : Variant)->$result : Text
 	Case of 
@@ -39,6 +52,8 @@ Function _toString($var : Variant)->$result : Text
 			$result:=JSON Stringify:C1217($var)
 		: (Value type:C1509($var)=Is object:K8:27)
 			$result:=JSON Stringify:C1217($var)
+		: (Value type:C1509($var)=Is BLOB:K8:12)
+			$result:="Blob[size="+String:C10(BLOB size:C605($var))+",utf8"+BLOB to text:C555($var; UTF8 text without length:K22:17)+"]"
 		Else 
 			$result:=String:C10($var)
 	End case 

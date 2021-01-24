@@ -1,2 +1,2 @@
-//%attributes = {}
-cs:C1710.Base32.new()  // singleton init
+//%attributes = {"invisible":true}
+cs:C1710.Base32.new()

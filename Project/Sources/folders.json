@@ -3,15 +3,17 @@
 		"methods": [
 			"hash_hmac",
 			"hexdec",
-			"str_split"
+			"str_split",
+			"timep",
+			"urlencode"
 		]
 	},
 	"Test": {
 		"methods": [
-			"test_"
+			"test_run"
 		],
 		"classes": [
-			"TestBase32",
+			"_TestBase32",
 			"TestCase",
 			"TestHmac",
 			"TestHOTP",

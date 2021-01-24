@@ -1,5 +1,9 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 #DECLARE ($algoName : Text; $data : Variant; $secret : Variant)->$hash : Text
+
+// LICENSE:  
+// https://github.com/4d-for-ios/4D-Mobile-App-Server/blob/master/LICENSE.md
+// https://github.com/4d-for-ios/4D-Mobile-App-Server/blob/master/Project/Sources/Classes/jwt.4dm
 
 C_BLOB:C604($outerKey; $innerKey; $b)
 C_LONGINT:C283($blockSize; $i; $byte; $algo)
@@ -107,4 +111,5 @@ BASE64 DECODE:C896(Generate digest:C1147($innerKey; $algo; *); $b; *)
 // append hash(innerKey + message) to outerKey
 COPY BLOB:C558($b; $outerKey; 0; $blockSize; BLOB size:C605($b))
 
-$hash:=Generate digest:C1147($outerKey; $algo; *)
+// Generate final hash
+$hash:=Generate digest:C1147($outerKey; $algo)

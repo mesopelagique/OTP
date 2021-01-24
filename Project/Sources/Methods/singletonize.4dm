@@ -1,4 +1,4 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 //%attributes = {}
 
 C_OBJECT:C1216($1)  // new instance to singletonize

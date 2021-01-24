@@ -1,21 +1,14 @@
-//%attributes = {}
+//%attributes = {"invisible":true}
 
+#DECLARE ($text : Text; $size : Integer)->$splitted : Collection
 
-C_TEXT:C284($1)
-C_LONGINT:C283($2)
-C_COLLECTION:C1488($0)
+$splitted:=New collection:C1472()
 
-$0:=New collection:C1472()
-
-C_TEXT:C284($text)
-$text:=$1
-C_LONGINT:C283($begin; $end)
-$begin:=0
-$end:=$2
-
-While ($end<=Length:C16($text))
-	$0.append(Substring:C12($text; 0; $2))
-	$begin:=$begin+$2
-	$end:=$end+$2
+C_LONGINT:C283($begin; $limit)
+$begin:=1
+$limit:=(Length:C16($text)+1)
+While (($begin+$size)<=$limit)
+	$splitted.push(Substring:C12($text; $begin; $size))
+	$begin:=$begin+$size
 End while 
 
