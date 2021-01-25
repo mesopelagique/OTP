@@ -125,9 +125,11 @@ You could generate QR code using [javascript](https://github.com/mesopelagique/f
 ASSERT($opt.verify(Int(Request("code?")); "Code is not ok")
 ```
 
-Due to time lag between device, sometimes a code verify could failed
+Due to time drift, time could be different across devices and server and sometimes a code verify could failed (see TODO)
 
-> one solution could be to test before and after code too
+## TODO 
+
+- Time drift fix: one solution could be to test before and after code too (by adding and removing some time)
 
 ## Other components
 
