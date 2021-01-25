@@ -59,7 +59,7 @@ TOTP allow to not manage a counter by using the current time stamp instead
 You can verify the code with current timestamp
 
 ```4d
-$isAuth:=$otp.verify(139664) // TODO check if could be tested without affected it
+$isAuth:=$otp.verify(139664)
 ```
 
 or a specific timestamp to test
