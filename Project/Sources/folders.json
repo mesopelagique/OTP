@@ -12,6 +12,9 @@
 		"methods": [
 			"test_run"
 		],
+		"forms": [
+			"TOTP"
+		],
 		"classes": [
 			"TestBase32",
 			"TestCase",
