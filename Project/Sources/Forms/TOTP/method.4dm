@@ -8,7 +8,7 @@ Case of
 			Form:C1466.code:=Form:C1466.otp.now()
 		End if 
 		
-		SET TIMER:C645(10)  // XXX cannot do with real time? Form.otp.interval (30s)
+		SET TIMER:C645(10)  // XXX cannot do with real time? Form.otp.period (30s)
 		
 	: ($event.code=On Timer:K2:25)
 		

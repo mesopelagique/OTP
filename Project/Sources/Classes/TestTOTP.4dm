@@ -10,8 +10,8 @@ Function test_init
 	
 Function test_init_interval
 	var $o : Object
-	$o:=OTP.TOTP.new("JDDK4U6G3BJLEZ7Y"; New object:C1471("interval"; 60))
-	ASSERT:C1129($o.interval=60)
+	$o:=OTP.TOTP.new("JDDK4U6G3BJLEZ7Y"; New object:C1471("period"; 60))
+	ASSERT:C1129($o.period=60)
 	
 Function test_it_gets_the_good_code_at_given_times()
 	var $o : Object
