@@ -22,7 +22,7 @@ $otp:=OTP.HOTP.new("JDDK4U6G3BJLEZ7Y") // base32 encoded key
 
 Maintain a counter for a user, to change its value at each try.
 
-### Verify
+### Verify HOTP
 
 You can verify the code according to a counter
 
@@ -54,7 +54,7 @@ $otp:=OTP.TOTP.new("JDDK4U6G3BJLEZ7Y")
 
 TOTP allow to not manage a counter by using the current time stamp instead
 
-### Verify 
+### Verify TOTP
 
 You can verify the code with current timestamp
 
@@ -125,11 +125,7 @@ You could generate QR code using [javascript](https://github.com/mesopelagique/f
 ASSERT($opt.verify(Int(Request("code?")); "Code is not ok")
 ```
 
-Due to time drift, time could be different across devices and server and sometimes a code verify could failed (see TODO)
-
-## TODO 
-
-- Time drift fix: one solution could be to test before and after code too (by adding and removing some time)
+Due to time drift, time could be different across devices and server and sometimes a code verify could failed.
 
 ## Other components
 
