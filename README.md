@@ -6,6 +6,7 @@
 [![release][release-shield]][release-url]
 [![license][license-shield]][license-url]
 [![discord][discord-shield]][discord-url]
+[![sponsors][sponsors-shield]][sponsors-url]
 
 Generate [one-time passwords(OTP)](https://en.wikipedia.org/wiki/One-time_password)
 
@@ -127,6 +128,14 @@ ASSERT($opt.verify(Int(Request("code?")); "Code is not ok")
 
 Due to time drift, time could be different across devices and server and sometimes a code verify could failed.
 
+## To help
+
+If you run a business and you’re using one of my projects in a revenue-generating product, it makes business sense to sponsor this open source development
+
+[![sponsors][sponsors-shield]][sponsors-url]
+
+Thank you for your support!
+
 ## Other components
 
 [<img src="https://mesopelagique.github.io/quatred.png" alt="mesopelagique"/>](https://mesopelagique.github.io/)
@@ -143,3 +152,5 @@ Due to time drift, time could be different across devices and server and sometim
 [license-url]: LICENSE.md
 [discord-shield]: https://img.shields.io/badge/chat-discord-7289DA?logo=discord&style=flat
 [discord-url]: https://discord.gg/dVTqZHr
+[sponsors-shield]: https://img.shields.io/github/sponsors/phimage?color=violet&logo=github
+[sponsors-url]: https://github.com/sponsors/phimage
