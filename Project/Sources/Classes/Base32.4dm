@@ -54,7 +54,12 @@ Function encode
 		End if 
 		$bits:=$bits-5
 	End while 
-	$0:=Replace string:C233($obuff; "="; "")
+	$obuff:=Replace string:C233($obuff; "="; ""; *)
+	
+	If (Length:C16($obuff)%8#0)
+		$obuff:=$obuff+("="*(8-(Length:C16($obuff)%8)))
+	End if 
+	$0:=$obuff
 	
 Function decode
 	C_BLOB:C604($0; $blob)
