@@ -7,54 +7,81 @@ Function encodeText
 	C_TEXT:C284($1)
 	C_TEXT:C284($0)
 	C_BLOB:C604($blob)
-	TEXT TO BLOB:C554($1; $blob)
-	
+	TEXT TO BLOB:C554($1; $blob; UTF8 text without length:K22:17)
 	$0:=This:C1470.encode($blob)
 	
+	
 Function encode
-	C_BLOB:C604($1; $data)
+	var $1; $blob : Blob
+	var $0; $encoded : Text  //$0 contains a base32 encoded string
+	$blob:=$1
 	
-	C_TEXT:C284($0; $obuff)
-	C_LONGINT:C283($bf)
-	C_TEXT:C284($alfa)
-	C_LONGINT:C283($z; $x; $i; $bits; $offset; $a; $bf; $offset; $index)
-	
+	var $alfa : Text
 	$alfa:="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
-	$z:=Length:C16($alfa)
-	$x:=BLOB size:C605($1)
-	$data:=$1
-	// To get the last byte of the blob as integer. 
-	TEXT TO BLOB:C554(Char:C90(0x0000); $data; Mac text without length:K22:10; *)
-	$obuff:=""
-	$i:=1
-	$bits:=0
-	C_LONGINT:C283($pad)
-	$pad:=0
-	While ($i<=$x) | ($bits>0)
-		If ($bits<5)
-			If ($i<=$x)
-				$bf:=$bf << 8
-				$offset:=$i-1
-				$a:=BLOB to integer:C549($data; Macintosh byte ordering:K22:2; $offset)
-				$a:=($a & 0xFF00) >> 8
-				$bf:=$bf | $a
-				$bits:=$bits+8
-				$i:=$i+1
-			Else 
-				$pad:=5-$bits
-				$bf:=$bf << $pad
-				$bits:=$bits+$pad
+	
+	var $i; $index : Integer
+	var $next_byte; $numBitsLeftOver : Integer
+	var $fiveBits; $shiftToGet5Bits : Integer
+	
+	$index:=0
+	$numBitsLeftOver:=0
+	For ($i; 1; BLOB size:C605($blob))
+		$next_byte:=($next_byte << 8)+$blob{$index}  // fetch a single byte from the input blob
+		$numBitsLeftOver:=$numBitsLeftOver+8
+		
+		While ($numBitsLeftOver>=5)
+			$shiftToGet5Bits:=($numBitsLeftOver-5)
+			
+			$fiveBits:=($next_byte >> $shiftToGet5Bits)+1  // get high 5 bits
+			If ($fiveBits>0) & ($fiveBits<=Length:C16($alfa))
+				$encoded:=$encoded+$alfa[[$fiveBits]]
 			End if 
-		End if 
-		$index:=0x001F & ($bf >> ($bits-5))
-		If ((($pad>0) | ($i>$x)) & ($index=0))
-			$obuff:=$obuff+"="
-		Else 
-			$obuff:=$obuff+Substring:C12($alfa; $index+1; 1)
-		End if 
-		$bits:=$bits-5
-	End while 
-	$0:=Replace string:C233($obuff; "="; "")
+			
+			$numBitsLeftOver:=$numBitsLeftOver-5
+			Case of 
+				: ($numBitsLeftOver=0)
+					$next_byte:=0
+				: ($numBitsLeftOver=1)
+					$next_byte:=$next_byte & (0x0001)
+				: ($numBitsLeftOver=2)
+					$next_byte:=$next_byte & (0x0003)
+				: ($numBitsLeftOver=3)
+					$next_byte:=$next_byte & (0x0007)
+				: ($numBitsLeftOver=4)
+					$next_byte:=$next_byte & (0x000F)
+				: ($numBitsLeftOver=5)
+					$next_byte:=$next_byte & (0x001F)
+				: ($numBitsLeftOver=6)
+					$next_byte:=$next_byte & (0x003F)
+				: ($numBitsLeftOver=7)
+					$next_byte:=$next_byte & (0x007F)
+				: ($numBitsLeftOver=8)
+					$next_byte:=$next_byte & (0x00FF)
+				: ($numBitsLeftOver=9)
+					$next_byte:=$next_byte & (0x01FF)
+				: ($numBitsLeftOver=10)
+					$next_byte:=$next_byte & (0x03FF)
+				: ($numBitsLeftOver=11)
+					$next_byte:=$next_byte & (0x07FF)
+				: ($numBitsLeftOver=12)
+					$next_byte:=$next_byte & (0x0FFF)
+				Else 
+					
+			End case 
+			
+		End while 
+		
+		$index:=$index+1
+	End for 
+	
+	// deal with any left over bits
+	If ($numBitsLeftOver>0)
+		$next_byte:=($next_byte << (5-$numBitsLeftOver))  // pad on right with 0's
+		$fiveBits:=($next_byte & 0x001F)+1  // get high 5 bits
+		$encoded:=$encoded+$alfa[[$fiveBits]]
+	End if 
+	
+	$0:=$encoded
 	
 Function decode
 	C_BLOB:C604($0; $blob)
