@@ -98,7 +98,7 @@ OTP.Base32.instance.encode($aSecretKeyBlob; False)
 OTP.Base32.instance.encodeText($aSecretKeyText; False)
 ```
 
-Code from [forum](https://discuss.4d.com/t/base32-encode-decode-in-native-4d/11129) fixed by [@dbeaubien](https://github.com/dbeaubien) #3, and encode with padding suggesting by [@blegay](https://github.com/blegay) + rfc test #2
+Code from [forum](https://discuss.4d.com/t/base32-encode-decode-in-native-4d/11129) fixed by [@dbeaubien](https://github.com/dbeaubien) [#3](https://github.com/mesopelagique/OTP/pull/3), and encode with padding suggesting by [@blegay](https://github.com/blegay) + rfc test [#2](https://github.com/mesopelagique/OTP/pull/2)
 
 ## Testing authenticator app with TOTP
 
