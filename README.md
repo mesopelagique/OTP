@@ -13,7 +13,7 @@ Generate [one-time passwords(OTP)](https://en.wikipedia.org/wiki/One-time_passwo
 This is compatible with apps available for Android and iPhone.
 > For that provide the secret key or an url in QR code for instance 
 
-## HOTP [RFC 4226](http://tools.ietf.org/html/rfc4226)
+## HOTP [RFC 4226](https://tools.ietf.org/html/rfc4226)
 
 Create an `HOTP` instance with our secret key encoded to base32(without pading ie. =)
 
@@ -45,7 +45,7 @@ $code:=$otp.at(1500)
 $url:=$otp.provisioningUri("my app";$currentCounter)
 ```
 
-## TOTP [RFC 6238](http://tools.ietf.org/html/rfc6238)
+## TOTP [RFC 6238](https://tools.ietf.org/html/rfc6238)
 
 Create an `TOTP` instance with our secret key encoded to base32(without pading ie. =)
 
