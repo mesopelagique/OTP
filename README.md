@@ -94,13 +94,11 @@ $url:=$otp.provisioningUri("my app")
 To encode to base 32 without padding (ie. =) you could use
 
 ```4d
-OTP.Base32.instance.encode($aSecretKeyBlob)
-OTP.Base32.instance.encodeText($aSecretKeyText)
+OTP.Base32.instance.encode($aSecretKeyBlob; False)
+OTP.Base32.instance.encodeText($aSecretKeyText; False)
 ```
 
-Code from [forum](https://discuss.4d.com/t/base32-encode-decode-in-native-4d/11129)
-
-⚠️ seems to not encoded property all string
+Code from [forum](https://discuss.4d.com/t/base32-encode-decode-in-native-4d/11129) fixed by [@dbeaubien](https://github.com/dbeaubien) #3, and encode with padding suggesting by [@blegay](https://github.com/blegay) + rfc test #2
 
 ## Testing authenticator app with TOTP
 

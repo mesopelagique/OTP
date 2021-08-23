@@ -5,16 +5,26 @@ Class constructor
 	
 Function encodeText
 	C_TEXT:C284($1)
-	C_TEXT:C284($0)
-	C_BLOB:C604($blob)
+	var $0; $1 : Text
+	var $2 : Boolean
+	var $blob : Blob
 	TEXT TO BLOB:C554($1; $blob; UTF8 text without length:K22:17)
-	$0:=This:C1470.encode($blob)
-	
+	If (Count parameters:C259>1)
+		$0:=This:C1470.encode($blob; $2)
+	Else 
+		$0:=This:C1470.encode($blob)
+	End if 
 	
 Function encode
 	var $1; $blob : Blob
+	var $2; $padding : Boolean
 	var $0; $encoded : Text  //$0 contains a base32 encoded string
 	$blob:=$1
+	If (Count parameters:C259>1)
+		$padding:=$2
+	Else 
+		$padding:=True:C214  // default padding
+	End if 
 	
 	var $alfa : Text
 	$alfa:="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"
@@ -79,6 +89,12 @@ Function encode
 		$next_byte:=($next_byte << (5-$numBitsLeftOver))  // pad on right with 0's
 		$fiveBits:=($next_byte & 0x001F)+1  // get high 5 bits
 		$encoded:=$encoded+$alfa[[$fiveBits]]
+	End if 
+	
+	If ($padding)
+		If (Length:C16($encoded)%8#0)
+			$encoded:=$encoded+("="*(8-(Length:C16($encoded)%8)))
+		End if 
 	End if 
 	
 	$0:=$encoded
