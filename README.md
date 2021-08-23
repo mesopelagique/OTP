@@ -116,7 +116,9 @@ Provide a QR Code with url provided by code
 $url:=$otp.provisioningUri("mesopelagique") // otpauth://totp/mesopelagique?secret=JDDK4U6G3BJLEZ7Y
 ```
 
-You could generate QR code using [javascript](https://github.com/mesopelagique/form-login-SignInWithQRCode#present-a-qr-code-and-where) or temporary for test using a website like https://www.qr-code-generator.com/, https://www.unitag.io/fr/qrcode, ...
+You could generate QR code using [javascript](https://github.com/mesopelagique/form-login-SignInWithQRCode#present-a-qr-code-and-where) or temporary for test only using a website like https://www.qr-code-generator.com/, https://www.unitag.io/fr/qrcode, ...
+
+> ⚠️ do not rely on third party website on production, it could intercept private data
 
 ### Verify code
 
