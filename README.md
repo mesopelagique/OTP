@@ -15,7 +15,7 @@ This is compatible with apps available for Android and iPhone.
 
 ## HOTP [RFC 4226](https://tools.ietf.org/html/rfc4226)
 
-Create an `HOTP` instance with our secret key encoded to base32(without pading ie. =)
+Create an `HOTP` instance with our secret key encoded to [base32(without pading ie. =)](#base32)
 
 ```4d
 $otp:=OTP.HOTP.new("JDDK4U6G3BJLEZ7Y") // base32 encoded key
