@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {}
 var $className : Text
 var $cs : Object
 

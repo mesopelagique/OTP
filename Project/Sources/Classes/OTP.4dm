@@ -1,7 +1,14 @@
 
 
 /// Constructor for the OTP class
-Class constructor($secret : Text; $opt : Object)
+Class constructor($secret : Text)
+	var $2; $opt : Object  // optional param
+	ASSERT:C1129(Count parameters:C259>=1)
+	ASSERT:C1129(Count parameters:C259<=2)
+	If (Count parameters:C259=2)
+		$opt:=$2
+	End if 
+	
 	This:C1470.secret:=$secret  // TODO encode cs.Base32.instance useless to encode/decode..., depend on passed format, add option?
 	
 	This:C1470._optSet($opt; "digest"; Is text:K8:3; "sha1")
