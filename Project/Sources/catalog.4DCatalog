@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
 <base name="OTP" uuid="664D29FE6CB24240B98BF1196F67881C" collation_locale="en">
 	<schema name="DEFAULT_SCHEMA"/>
