@@ -104,6 +104,7 @@ Code from [forum](https://discuss.4d.com/t/base32-encode-decode-in-native-4d/111
 
 ### Download ones
 
+- Tofu [iOS](https://apps.apple.com/app/tofu-authenticator/id1082229305)
 - Google Authenticator [iOS](https://apps.apple.com/fr/app/google-authenticator/id388497605) [android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=fr&gl=US)
 - Microsoft Authenticator [iOS](https://apps.apple.com/fr/app/microsoft-authenticator/id983156458) [android](https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=fr&gl=US)
 - ...
