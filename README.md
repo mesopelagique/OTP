@@ -129,6 +129,12 @@ ASSERT($opt.verify(Int(Request("code?")); "Code is not ok")
 
 Due to time drift, time could be different across devices and server and sometimes a code verify could failed.
 
+## Contributors
+
+<a href = "https://github.com/mesopelagique/OTP/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=mesopelagique/OTP"/>
+</a>
+
 ## To help
 
 If you run a business and you’re using one of my projects in a revenue-generating product, it makes business sense to sponsor this open source development
